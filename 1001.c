@@ -14,10 +14,10 @@
 #include <stdlib.h>
 int main()
 {
-    int a, b, x;
-    scanf("%d", &a);
-    scanf("%d", &b);
-    x = a + b;
-    printf("%d\n", x);
+    int A, B, X;
+    scanf("%d", &A);
+    scanf("%d", &B);
+    X = A + B;
+    printf("X = %d\n", X);
     return 0;
 }
