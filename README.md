@@ -4,6 +4,6 @@ Repositório criado para armazenar códigos de exercícios resolvidos do URI Onl
 <br>
 
   <center>
-  <img src="https://media.giphy.com/media/4PUj9aD0MmP4n8ETHl/giphy.gif" />
-  <img src="https://media.giphy.com/media/10zxDv7Hv5RF9C/giphy.gif" />
+  <img src="https://media.giphy.com/media/4PUj9aD0MmP4n8ETHl/giphy.gif" align="left"/>
+  <img src="https://media.giphy.com/media/10zxDv7Hv5RF9C/giphy.gif"align="right" />
     </center>
