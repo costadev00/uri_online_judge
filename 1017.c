@@ -17,7 +17,7 @@ média durante a mesma (em km/h).
 
 Saída
 Imprima a quantidade de litros necessária para realizar a viagem,
- com três dígitos após o ponto decimal
+com três dígitos após o ponto decimal
 */
 #include <stdio.h>
 #include <stdlib.h>

@@ -18,11 +18,64 @@ a mensagem: “Presentation Error”.
 #include <stdlib.h>
 int main()
 {
-    int nota100 = 100, nota50 = 50, nota20 = 20, nota10 = 10, nota5 = 5, nota2 = 2, nota1 = 1, dinheiro = 0;
-    scanf("%d", dinheiro);
+    int cedulas = 100, valor = 0, total = 0,
+        cont_100 = 0, cont_50 = 0, cont_20 = 0, cont_10 = 0, cont_5 = 0, cont_2 = 0, cont_1 = 0;
+    scanf("%d", &valor);
+    total = valor;
     do
     {
+        if (total >= cedulas)
+        {
+            total = total - cedulas;
+            cont_100++;
+        }
+        else if (total >= 50 && total < 100)
+        {
+            cedulas = 50;
+            total = total - cedulas;
+            cont_50++;
+        }
+        else if (total >= 20 && total < 50)
+        {
+            cedulas = 20;
+            total = total - cedulas;
+            cont_20++;
+        }
+        else if (total >= 10 && total < 20)
+        {
+            cedulas = 10;
+            total = total - cedulas;
+            cont_10++;
+        }
+        else if (total >= 5 && total < 10)
+        {
+            cedulas = 5;
+            total = total - cedulas;
+            cont_5++;
+        }
+        else if (total >= 2 && total < 5)
+        {
+            cedulas = 2;
+            total = total - cedulas;
+            cont_2++;
+        }
+        else
+        {
+            cedulas = 1;
+            total = total - cedulas;
+            cont_1++;
+        }
+        {
+        }
 
-    } while (x != dinheiro);
+    } while (total != 0);
+    printf("%d\n", valor);
+    printf("%d nota(s) de R$ 100,00\n", cont_100);
+    printf("%d nota(s) de R$ 50,00\n", cont_50);
+    printf("%d nota(s) de R$ 20,00\n", cont_20);
+    printf("%d nota(s) de R$ 10,00\n", cont_10);
+    printf("%d nota(s) de R$ 5,00\n", cont_5);
+    printf("%d nota(s) de R$ 2,00\n", cont_2);
+    printf("%d nota(s) de R$ 1,00\n", cont_1);
     return 0;
 }
