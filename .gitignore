@@ -2,4 +2,5 @@
 *
 !*.*
 debug.c
+debug.cpp
 .vscode/
