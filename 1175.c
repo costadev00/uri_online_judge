@@ -10,13 +10,14 @@ int main()
     {
         scanf("%d", &vet[i]);
     }
-    // for (int i = 0; x < 20; i++)
-    // {
-    //     vet[i] = vet[j];
-    //     x++;
-    //     j--;
-    // }
-    for (int i = 19; i >= 0; i--)
+
+    for (int i = 0; i < 10; i++)
+    {
+        x = vet[i];
+        vet[i] = vet[19 - i];
+        vet[19 - i] = x;
+    }
+    for (int i = 0; i < 20; i++)
     {
         printf("N[%d] = %d\n", i, vet[i]);
     }
