@@ -1,5 +1,4 @@
-*
-!*.*
+*.exe
 debug.c
 debug.cpp
 .vscode/
