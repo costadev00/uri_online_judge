@@ -1,32 +1,50 @@
 /*
-TODO : SOLVE
+code by: Hellen Ayumi
 */
 #include <bits/stdc++.h>
-#include <iostream>
+
 using namespace std;
+
 int main()
 {
-    int m, n, res = 0;
-    char exp[100];
-    do
+    int a, b, d, f, e = 1, i;
+    char c;
+    cin >> a;
+    while (a != 0)
     {
-        /* code */
-
-        cin >> m;
-        for (int i = 0; i < m; i++)
+        f = 0;
+        d = 1;
+        for (i = 0; i < a; i++)
         {
-            // cin >> n;
-            cin >> exp;
-            for (int j = 0; j < strlen(exp); j++)
+            if (i > 0)
             {
-                if (exp[j] == '+')
-                    if (j % 2 == 0)
-                    {
-                        vet_nums = to_int;
-                    }
+                cin >> c;
+                if (c == '+')
+                {
+                    d = 1;
+                }
+                else
+                {
+                    d = 0;
+                }
+            }
+            cin >> b;
+            if (d == 1)
+            {
+                f = f + b;
+            }
+            else
+            {
+                f = f - b;
             }
         }
-        while (m != 0)
-            ;
-        return 0;
+
+        cout << "Teste " << e << endl;
+        cout << f << endl
+             << endl;
+        e++;
+        cin >> a;
     }
+
+    return 0;
+}
