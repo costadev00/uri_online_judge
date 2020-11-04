@@ -1,21 +1,21 @@
 /*
+PS: I DONT KNOW BUT THIS CODE GET RUNTIME ERROR ON URI
 */
 #include <bits/stdc++.h>
-#include <iostream>
 using namespace std;
 int main()
 {
-    int n, x[2000], acm2 = 0;
+    int n, x[2001], acm2 = 0;
     cin >> n;
     int acm[n] = {0};
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i <= n; i++)
     {
         cin >> x[i];
     }
     sort(x, x + n);
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i <= n; i++)
     {
-        for (int j = 0; j < n; j++)
+        for (int j = 1; j <= n; j++)
         {
             if (x[i] == x[j])
             {
@@ -24,9 +24,9 @@ int main()
             }
         }
     }
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i < n; i++)
     {
-        if (x[i - 1] != x[i])
+        if (x[i] != x[i + 1])
         {
             printf("%d aparece %d vez(es)\n", x[i], acm[i]);
         }
