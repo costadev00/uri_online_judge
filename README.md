@@ -6,6 +6,6 @@ Meu perfil: https://www.urionlinejudge.com.br/judge/pt/profile/261658
 
   <center>
   
-  <img src="https://media.giphy.com/media/10zxDv7Hv5RF9C/giphy.gif" width="450" height="450" align="left"/> 
-  <img src="https://media.giphy.com/media/l0HlFCT4uNTArsbu0/giphy.gif"width="450" height="450" align="right"/>
+  <img src="https://media.giphy.com/media/10zxDv7Hv5RF9C/giphy.gif" width="250" height="350" align="left"/> 
+  <img src="https://media.giphy.com/media/l0HlFCT4uNTArsbu0/giphy.gif"width="250" height="350" align="right"/>
     </center>
