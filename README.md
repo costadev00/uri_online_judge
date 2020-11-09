@@ -1,7 +1,7 @@
 # uri_online_judge
 
 Repositório criado para armazenar códigos de exercícios resolvidos do URI Online Judge. A prática DIÁRIA desses exercícios foi de grande valor para ter um hábito de programar algo todos os dias. É de grande valor também os conhecimentos que aprendi para o uso em MARATONAS DE PROGRAMAÇÃO que participei durante a minha graduação
-<a href"https://www.urionlinejudge.com.br/judge/pt/profile/261658">Meu perfil </a>
+Meu perfil: https://www.urionlinejudge.com.br/judge/pt/profile/261658
 <br>
 
   <center>
