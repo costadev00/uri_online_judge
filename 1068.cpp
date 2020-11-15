@@ -6,14 +6,15 @@
 using namespace std;
 int main()
 {
+    stack<char> s;
     int cont, tam = 0;
     char exp[10001];
     while (fgets(exp, 10000, stdin))
     {
-        if (!EOF)
-        {
-            break;
-        }
+        // if (!EOF)
+        // {
+        //     break;
+        // }
         cont = 0;
         tam = strlen(exp);
 
@@ -27,12 +28,27 @@ int main()
         {
             if (exp[i] == '(')
             {
-                cont++;
+                s.push(exp[i]);
+                // cont++;
             }
             if (exp[i] == ')')
             {
+                s.push(exp[i]);
+                // cont--;
+            }
+        }
+
+        while (!s.empty())
+        {
+            if (s.top() == ')')
+            {
                 cont--;
             }
+            if (s.top() == '(')
+            {
+                cont++;
+            }
+            s.pop();
         }
         if (cont == 0)
         {
