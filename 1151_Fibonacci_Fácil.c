@@ -1,11 +1,14 @@
-#include <stdio.h>
+/*
 
+*/
+#include <stdio.h>
+#include <stdlib.h>
 int main()
 {
-    int n, i;
-    scanf("%d", &n);
+    int x, i;
+    scanf("%d", &x);
     int a, b = 0, c = 1;
-    for (i = 0; i < n; i++)
+    for (i = 0; i < x; i++)
     {
         if (i < 1)
         {
@@ -21,7 +24,7 @@ int main()
             b = c;
             c = a;
         }
-        if (i == n - 1)
+        if (i == x - 1)
         {
             printf("%d\n", a);
         }
