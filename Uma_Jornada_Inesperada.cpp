@@ -1,4 +1,3 @@
-//TODO: SOLVE
 #include <bits/stdc++.h>
 
 #define fastio                        \
@@ -12,5 +11,9 @@ using namespace std;
 int main()
 {
     fastio;
-    int return 0;
+    float n, x, res = 0;
+    cin >> n >> x;
+    res = x / n;
+    printf("%.2f\n", res);
+    return 0;
 }

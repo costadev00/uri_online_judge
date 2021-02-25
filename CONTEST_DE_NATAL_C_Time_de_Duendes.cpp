@@ -54,6 +54,6 @@ int main()
             }
         }
     }
-    printf("%d\n", res);
+    printf("%d\n", res+1);
     return 0;
 }
