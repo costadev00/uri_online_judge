@@ -1,4 +1,3 @@
-//TODO SOLVE
 #include <bits/stdc++.h>
 
 #define fastio                        \
@@ -6,7 +5,6 @@
     cin.tie(NULL)
 
 #define endl "\n"
-
 bool isSubSequence(char str1[], char str2[], int m, int n)
 {
     int j = 0; // For index of str1 (or subsequence
@@ -23,38 +21,31 @@ bool isSubSequence(char str1[], char str2[], int m, int n)
     // If all characters of str1 were found in str2
     return (j == m);
 }
-
 using namespace std;
 
 int main()
 {
     fastio;
-    int j, sub = 0, caso = 1, seq = 0;
-    string n, q;
-    while (cin >> n)
+    int n, q;
+    char s[100000], r[100000];
+    cin >> n;
+    while (n--)
     {
-        j = 0;
-        seq = 0;
-        sub = 0;
+        cin >> s;
         cin >> q;
-        for (int i = 0; i < n.size(); i++)
+        for (int i = 0; i < q; i++)
         {
-            if (n[i] == q[j])
+            cin >> r;
+            if (isSubSequence(r, s, strlen(r), strlen(s)))
             {
-                sub = i;
-                j++;
+
+                cout << "Yes\n";
             }
-            if (j >= q.size())
+            else
             {
-                j = 0;
-                seq++;
+                cout << "No\n";
             }
         }
-        printf("Caso #%d:\n", caso);
-        printf("Qtd.Subsequencias: %d\n", seq);
-        printf("Pos: %d\n", sub);
-        printf("\n");
-        caso++;
     }
     return 0;
 }
