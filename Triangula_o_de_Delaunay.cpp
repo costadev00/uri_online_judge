@@ -1,4 +1,3 @@
-//TODO SOLVE
 #include <bits/stdc++.h>
 
 #define fastio                        \
@@ -12,6 +11,17 @@ using namespace std;
 int main()
 {
     fastio;
+    double l, i = 3, x = 0;
+    do
+    {
+        cin >> l;
+        if (l == 0)
+        {
+            break;
+        }
+        x = (i - l) / l;
+        printf("%.6lf\n", abs(x));
 
+    } while (l != 0);
     return 0;
 }
