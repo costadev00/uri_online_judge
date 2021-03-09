@@ -15,24 +15,37 @@ int main()
 {
     fastio;
     int n, q, cont = 0;
-    char palavra[n][100];
+    int tam;
     cin >> n;
+    string palavra1;
+    vector<string> vect;
     for (int i = 0; i < n; i++)
     {
-        cin >> palavra[i];
+        cin >> palavra1;
+        vect.push_back(palavra1);
     }
     cin >> q;
-    char palavra2[q][100];
-    for (int i = 0; i < q; i++)
+    string palavra2;
+    while (q--)
     {
-        cin >> palavra2[i];
-        for (int j = 0; j < n; j++)
+        cin >> palavra2;
+        cont = 0;
+        tam = 0;
+        for (int i = 0; i < n; i++)
         {
-            if (palavra2[i] == palavra[j])
+            if (vect[i].find(palavra2) == 0)
             {
                 cont++;
-                continue;
+                tam = max(tam, (int)vect[i].size());
             }
+        }
+        if (cont != 0)
+        {
+            printf("%d %d\n", cont, tam);
+        }
+        else
+        {
+            printf("%d\n", -1);
         }
     }
     return 0;
