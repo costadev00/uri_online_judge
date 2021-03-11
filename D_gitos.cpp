@@ -90,7 +90,9 @@ int main()
     for (int i = 0; i < n; i++)
     {
         cin >> x >> y;
-        power(x, y);
+        // power(x, y);
+        //we can discard all of this and just use this log to solve the problem
+        printf("%.f\n", (floor(log10(pow(x, y)))) + 1);
     }
     return 0;
 }
