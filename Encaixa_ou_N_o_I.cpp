@@ -1,4 +1,3 @@
-//TODO:SOLVE
 #include <bits/stdc++.h>
 
 #define fastio                        \
@@ -14,18 +13,42 @@ int main()
     fastio;
     int n, j;
     string x, y;
+    string r;
+    int pos = 0;
     cin >> n;
     while (n--)
     {
-        j = 0;
+
         cin >> x >> y;
-        for (int i = 0; i < x.length(); i++)
+        pos = x.size() - y.size();
+        if (pos > x.size())
         {
-            if (x[i] == y[j])
-            {
-                j++;
-            }
+
+            cout << "nao encaixa\n";
+            continue;
         }
+        r = x.substr(pos, y.size());
+        // cout << << endl;
+        //     for (int i = 0; i < x.length(); i++)
+        //     {
+        //         if (x[i] == y[j])
+        //         {
+        //             j++;
+        //         }
+        //     }
+        // }
+        if (y == r)
+        {
+            cout << "encaixa\n";
+        }
+        else
+        {
+            cout << "nao encaixa\n";
+        }
+        x.clear();
+        y.clear();
+        r.clear();
+        pos = 0;
     }
     return 0;
 }
