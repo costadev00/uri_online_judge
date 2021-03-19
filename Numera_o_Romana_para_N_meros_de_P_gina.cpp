@@ -10,55 +10,24 @@ using namespace std;
 
 int main()
 {
-    fastio;
-    int x, i = 0;
-    char s[1000];
-    cin >> x;
-    do
+
+    int n;
+    cin >> n;
+    char *romanos[] = {"I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"};
+    int arabicos[] = {1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000};
+    // acha a quantidade de elementos no array
+    int indice = (sizeof(arabicos) / sizeof(arabicos[0])) - 1;
+    while (n > 0)
     {
-        if (x <= 1000 && x > 500)
+        if (n >= arabicos[indice])
         {
-            s[i] = 'M';
-            i++;
-            x -= 1000;
-        }
-        else if (x <= 500 && x > 100)
-        {
-            s[i] = 'D';
-            i++;
-            x -= 500;
-        }
-        else if (x <= 100 && x > 50)
-        {
-            s[i] = 'C';
-            i++;
-            x -= 100;
-        }
-        else if (x <= 50 && x > 10)
-        {
-            s[i] = 'L';
-            i++;
-            x -= 50;
-        }
-        else if (x <= 10 && x > 5)
-        {
-            s[i] = 'X';
-            i++;
-            x -= 10;
-        }
-        else if (x <= 5 && x > 1)
-        {
-            s[i] = 'V';
-            i++;
-            x -= 5;
+            printf("%s", romanos[indice]);
+            n -= arabicos[indice];
         }
         else
         {
-            s[i] = 'I';
-            i++;
-            x -= 1;
+            indice--;
         }
-    } while (x > 0);
-    printf("%s\n", s);
-    return 0;
+    }
+    printf("\n");
 }

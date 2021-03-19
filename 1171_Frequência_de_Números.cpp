@@ -1,35 +1,33 @@
-/*
-PS: I DONT KNOW BUT THIS CODE GET RUNTIME ERROR ON URI
-*/
 #include <bits/stdc++.h>
+
+#define fastio                        \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL)
+
+#define endl "\n"
+
 using namespace std;
+
 int main()
 {
-    int n, x[2001], acm2 = 0;
+    fastio;
+    int n;
+    vector<int> vect;
     cin >> n;
-    int acm[n] = {0};
-    for (int i = 1; i <= n; i++)
+    int vet[n];
+    for (int i = 0; i < n; i++)
     {
-        cin >> x[i];
+        cin >> vet[i];
+        vect.push_back(vet[i]);
     }
-    sort(x, x + n);
-    for (int i = 1; i <= n; i++)
+    sort(vet, vet + n);
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 1; j <= n; j++)
+        if (vet[i] == vet[i + 1])
         {
-            if (x[i] == x[j])
-            {
-                acm[i]++;
-                acm2++;
-            }
+            continue;
         }
-    }
-    for (int i = 1; i < n; i++)
-    {
-        if (x[i] != x[i + 1])
-        {
-            printf("%d aparece %d vez(es)\n", x[i], acm[i]);
-        }
+        printf("%d aparece %d vez(es)\n", vet[i], count(vect.begin(), vect.end(), vet[i]));
     }
     return 0;
 }
