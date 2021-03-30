@@ -1,3 +1,4 @@
+TODO : SOLVE
 #include <bits/stdc++.h>
 
 #define fastio                        \
@@ -6,15 +7,15 @@
 
 #define endl "\n"
 
-using namespace std;
+       using namespace std;
 
 int main()
 {
     fastio;
-    float n, x, res = 0;
-    cin >> n >> x;
-
-    res = x / (n + 2);
-    printf("%.2f\n", res);
+    int n;
+    while (cin >> n)
+        for (int i = 0; i < n; i++)
+        {
+        }
     return 0;
 }

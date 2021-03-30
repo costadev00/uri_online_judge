@@ -15,16 +15,16 @@ int main()
     while (cin >> n)
     {
         j = 0;
-        long long int soma = 0;
+        float soma = 0;
         for (int i = strlen(n) - 1; i >= 0; --i)
         {
-            soma += (n[i] - 'A' + 1) * (long long int)pow(26, j);
+            soma += (n[i] - 'A' + 1) * pow(26, j);
             j++;
         }
 
         if (soma <= 16384)
         {
-            cout << soma << endl;
+            cout << (int)soma << endl;
         }
         else
         {

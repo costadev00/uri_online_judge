@@ -7,45 +7,65 @@
 #define endl "\n"
 
 using namespace std;
+int nc, n, x;
+vector<int> arr;
 
-void counting_sort(int A[], int k, int n)
+void printArray(vector<int> &arr)
 {
-    int i, j;
-    int B[15], C[100];
-    for (i = 0; i <= k; i++)
-        C[i] = 0;
-    for (j = 1; j <= n; j++)
-        C[A[j]] = C[A[j]] + 1;
-    for (i = 1; i <= k; i++)
-        C[i] = C[i] + C[i - 1];
-    for (j = n; j >= 1; j--)
+    int aux = 0;
+    for (int i = 0; i < arr.size(); i++)
     {
-        B[C[A[j]]] = A[j];
-        C[A[j]] = C[A[j]] - 1;
+
+        if (aux + 1 != arr.size())
+        {
+            cout << arr[i] << " ";
+        }
+        else
+        {
+            cout << arr[i];
+        }
+        aux++;
     }
-    printf("The Sorted array is : ");
-    for (i = 1; i <= n; i++)
-        printf("%d ", B[i]);
+    cout << "\n";
 }
+void countSort(vector<int> &arr)
+{
+    int max = *max_element(arr.begin(), arr.end());
+    int min = *min_element(arr.begin(), arr.end());
+    int range = max - min + 1;
+
+    vector<int> count(range), output(arr.size());
+    for (int i = 0; i < arr.size(); i++)
+        count[arr[i] - min]++;
+
+    for (int i = 1; i < count.size(); i++)
+        count[i] += count[i - 1];
+
+    for (int i = arr.size() - 1; i >= 0; i--)
+    {
+        output[count[arr[i] - min] - 1] = arr[i];
+        count[arr[i] - min]--;
+    }
+
+    for (int i = 0; i < arr.size(); i++)
+        arr[i] = output[i];
+    printArray(arr);
+}
+
 int main()
 {
     fastio;
-    int nc, n, k = 0;
-    scanf("%d", &nc);
+    cin >> nc;
     while (nc--)
     {
-        scanf("%d", &n);
-        int h[n];
-        k = 0;
-        for (int i = 0; i < n; i++)
+        cin >> n;
+        while (n--)
         {
-            scanf("%d" & h[i]);
-            if (h[i] > k)
-            {
-                k = h[i];
-            }
+            cin >> x;
+            arr.push_back(x);
         }
-        counting_sort()
+        countSort(arr);
+        arr.clear();
     }
     return 0;
 }

@@ -1,26 +1,46 @@
+/*
+
+*/
 #include <bits/stdc++.h>
-
-#define fastio                        \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(NULL)
-
-#define endl "\n"
-
 using namespace std;
-
 int main()
 {
-    fastio;
-    int n = 0;
-    string nome;
-    string nome2;
-    cin >> nome;
-    cin >> nome2;
-    if (nome == nome2)
+    int x;
+    vector<int> vet;
+    int t;
+    cin >> t;
+    int aux = 1;
+    int n;
+    int md;
+    float res = 0;
+    int k = 0;
+    while (t--)
     {
-        printf("alou\n");
+        cin >> k;
+        for (int i = 0; i < k; i++)
+        {
+            cin >> x;
+            if (x >= 11 && x <= 20)
+            {
+                vet.push_back(x);
+            }
+        }
+        sort(vet.begin(), vet.end());
+        n = vet.size();
+        md = n / 2;
+        if (n % 2 == 0)
+        {
+
+            res = vet[md - 1] + vet[md];
+            cout << "Case " << aux << ": " << res / 2 << endl;
+        }
+        else
+        {
+            cout << "Case " << aux << ": " << vet[md] << endl;
+        }
+        aux++;
+        n = 0, md = 0, res = 0;
+        vet.clear();
     }
-    n = nome.length();
-    printf("%d\n", n);
     return 0;
 }
