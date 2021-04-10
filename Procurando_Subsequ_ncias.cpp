@@ -1,60 +1,58 @@
-//TODO SOLVE
 #include <bits/stdc++.h>
-
 #define fastio                        \
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL)
 
-#define endl "\n"
-
-bool isSubSequence(char str1[], char str2[], int m, int n)
-{
-    int j = 0; // For index of str1 (or subsequence
-
-    // Traverse str2 and str1, and
-    // compare current character
-    // of str2 with first unmatched char
-    // of str1, if matched
-    // then move ahead in str1
-    for (int i = 0; i < n && j < m; i++)
-        if (str1[j] == str2[i])
-            j++;
-
-    // If all characters of str1 were found in str2
-    return (j == m);
-}
-
 using namespace std;
+
+typedef long long ll;
+typedef long double ld;
+
+#define endl "\n"
+#define MOD 1000000007
+#define vi vector<int>
+#define pb push_back
+#define FOR(i, a, b) for (int i = a; i < b; i++)
 
 int main()
 {
-    fastio;
-    int j, sub = 0, caso = 1, seq = 0;
-    string n, q;
-    while (cin >> n)
+    int casos = 0;
+    string n1, n2;
+
+    while (cin >> n1 >> n2)
     {
-        j = 0;
-        seq = 0;
-        sub = 0;
-        cin >> q;
-        for (int i = 0; i < n.size(); i++)
+        auto sub = 0u, pos = 0u;
+
+        for (int i = 0; i <= n2.size() - n1.size(); i++)
         {
-            if (n[i] == q[j])
+            bool is = true;
+            for (int j = 0; j < n1.size() && is; j++)
             {
-                sub = i;
-                j++;
+                is = (n1[j] == n2[i + j]);
             }
-            if (j >= q.size())
+            if (is)
             {
-                j = 0;
-                seq++;
+                sub++;
+                if (i + 1 > pos)
+                {
+                    pos = i + 1;
+                }
             }
         }
-        printf("Caso #%d:\n", caso);
-        printf("Qtd.Subsequencias: %d\n", seq);
-        printf("Pos: %d\n", sub);
-        printf("\n");
-        caso++;
+
+        cout << "Caso #" << ++casos << ":\n";
+        if (sub == 0)
+        {
+            cout << "Nao existe subsequencia\n";
+        }
+        else
+        {
+
+            cout << "Qtd.Subsequencias: " << sub << endl;
+            cout << "Pos: " << pos << endl;
+        }
+        cout << endl;
     }
+
     return 0;
 }

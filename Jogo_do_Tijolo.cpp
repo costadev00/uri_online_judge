@@ -1,12 +1,17 @@
-/*
-
-*/
 #include <bits/stdc++.h>
+
+#define fastio                        \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL)
 using namespace std;
+
+#define endl "\n"
+#define V vector
+
 int main()
 {
     int x;
-    vector<int> vet;
+    V<int> vet;
     int t;
     cin >> t;
     int aux = 1;
