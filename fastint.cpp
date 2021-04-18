@@ -1,14 +1,5 @@
 #include <bits/stdc++.h>
-
-#define fastio                        \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(NULL)
-
-#define endl "\n"
-
-using namespace std;
-
-void fastscan(unsigned long long int &number)
+void readint(int &number)
 {
     //variable to indicate sign of input number
     bool negative = false;
@@ -36,20 +27,4 @@ void fastscan(unsigned long long int &number)
     // value of the input number
     if (negative)
         number *= -1;
-}
-
-int main()
-{
-    fastio;
-    unsigned long long int a, b;
-    fastscan(a);
-    fastscan(b);
-    unsigned long long int resto = b;
-    while (b < a)
-    {
-        resto = a - b;
-        a = resto;
-    }
-    printf("%d\n", resto);
-    return 0;
 }

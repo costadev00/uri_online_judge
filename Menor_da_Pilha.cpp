@@ -15,19 +15,36 @@ typedef long double ld;
 #define read(n) getline(cin, n)
 #define FOR(i, a, b) for (int i = a; i < b; i++)
 
-struct MyStack
+// void readint(int &number)
+// {
+//     bool negative = false;
+//     register int c;
+
+//     number = 0;
+
+//     c = getchar();
+//     if (c == '-')
+//     {
+//         // number is negative
+//         negative = true;
+//         c = getchar();
+//     }
+
+//     for (; (c > 47 && c < 58); c = getchar())
+//         number = number * 10 + c - 48;
+//     if (negative)
+//         number *= -1;
+// }
+
+struct Stack
 {
     stack<int> s;
     int minEle;
 
-    // Prints minimum element of MyStack
     void getMin()
     {
         if (s.empty())
             cout << "EMPTY\n";
-
-        // variable minEle stores the minimum element
-        // in the stack.
         else
             cout << minEle << "\n";
     }
@@ -44,18 +61,14 @@ struct MyStack
         int t = s.top();
         s.pop();
 
-        // Minimum will change as the minimum element
-        // of the stack is being removed.
         if (t < minEle)
         {
             minEle = 2 * minEle - t;
         }
     }
 
-    // Removes top element from MyStack
     void push(int x)
     {
-        // Insert new number into the stack
         if (s.empty())
         {
             minEle = x;
@@ -63,7 +76,6 @@ struct MyStack
             return;
         }
 
-        // If new number is less than minEle
         if (x < minEle)
         {
             s.push(2 * x - minEle);
@@ -78,7 +90,7 @@ struct MyStack
 int main()
 {
     fastio;
-    MyStack s;
+    Stack s;
     int n, v;
     string op;
     cin >> n;

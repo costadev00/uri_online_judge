@@ -15,30 +15,14 @@ typedef long double ld;
 #define read(st) getline(cin, st)
 #define FOR(i, a, b) for (int i = a; i < b; i++)
 
-vi vet;
-int winner(int n)
-{
-    int aux = n;
-    if (aux == 1)
-    {
-        return 0;
-    }
-    aux--;
-}
 int main()
 {
     fastio;
-    int c = 1, n, k;
-    cin >> c;
-    while (c--)
+    int n;
+    while (cin >> n)
     {
-        cin >> n;
-        for (int i = 0; i < n; i++)
-        {
-            vet.push_back(i);
-        }
-        cout << "Case " << c << ":" << winner(n) << endl;
-        c++;
+        if (n == 0)
+            break;
     }
     return 0;
 }
