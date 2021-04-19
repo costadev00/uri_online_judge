@@ -1,55 +1,37 @@
 #include <bits/stdc++.h>
-
 #define fastio                        \
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL)
 
-#define endl "\n"
-
 using namespace std;
 
-void fastscan(unsigned long long int &number)
+typedef long long ll;
+typedef long double ld;
+
+#define endl "\n"
+#define MOD 1000000007
+#define vi vector<int>
+#define pb push_back
+#define read(st) getline(cin, st)
+#define FOR(i, a, b) for (int i = a; i < b; i++)
+
+// Function to compute num (mod a)
+int mod(string num, int a)
 {
-    //variable to indicate sign of input number
-    bool negative = false;
-    register int c;
-
-    number = 0;
-
-    // extract current character from buffer
-    c = getchar();
-    if (c == '-')
-    {
-        // number is negative
-        negative = true;
-
-        // extract the next character from the buffer
-        c = getchar();
-    }
-
-    // Keep on extracting characters if they are integers
-    // i.e ASCII Value lies from '0'(48) to '9' (57)
-    for (; (c > 47 && c < 58); c = getchar())
-        number = number * 10 + c - 48;
-
-    // if scanned input has a negative sign, negate the
-    // value of the input number
-    if (negative)
-        number *= -1;
+    // Initialize result
+    int res = 0;
+    // One by one process all digits of 'num'
+    for (int i = 0; i < num.length(); i++)
+        res = (res * 10 + (int)num[i] - '0') % a;
+    return res;
 }
-
 int main()
 {
     fastio;
-    unsigned long long int a, b;
-    fastscan(a);
-    fastscan(b);
-    unsigned long long int resto = b;
-    while (b < a)
-    {
-        resto = a - b;
-        a = resto;
-    }
-    printf("%d\n", resto);
+    string n1;
+    int n2;
+    cin >> n1;
+    cin >> n2;
+    cout << mod(n1, n2) << endl;
     return 0;
 }
