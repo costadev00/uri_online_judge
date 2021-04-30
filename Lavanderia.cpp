@@ -18,8 +18,27 @@ typedef long double ld;
 int main()
 {
     fastio;
-    int n, n2;
-    cin >> n >> n2;
-    cout << n % n2 << endl;
+    int n, la, lb, sa, sb;
+    bool posl = false, poss = false;
+    cin >> n;
+    cin >> la >> lb;
+    cin >> sa >> sb;
+    if (n >= la && n <= lb)
+    {
+        posl = true;
+    }
+    if (n >= sa && n <= sb)
+    {
+        poss = true;
+    }
+    if (posl && poss)
+    {
+        cout << "possivel\n";
+    }
+    else
+    {
+        cout << "impossivel\n";
+    }
+
     return 0;
 }

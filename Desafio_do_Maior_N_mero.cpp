@@ -18,8 +18,12 @@ typedef long double ld;
 int main()
 {
     fastio;
-    int n, n2;
-    cin >> n >> n2;
-    cout << n % n2 << endl;
+    int x;
+    vi vet;
+    while (cin >> x && x)
+    {
+        vet.pb(x);
+    }
+    cout << *max_element(vet.begin(), vet.end()) << endl;
     return 0;
 }

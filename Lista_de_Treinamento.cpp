@@ -18,8 +18,15 @@ typedef long double ld;
 int main()
 {
     fastio;
-    int n, n2;
-    cin >> n >> n2;
-    cout << n % n2 << endl;
+    int n, x;
+    cin >> n;
+    int cont = 0;
+    while (n--)
+    {
+        cin >> x;
+        if (x == 1)
+            cont++;
+    }
+    cout << cont << endl;
     return 0;
 }

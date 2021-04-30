@@ -18,8 +18,11 @@ typedef long double ld;
 int main()
 {
     fastio;
-    int n, n2;
-    cin >> n >> n2;
-    cout << n % n2 << endl;
+    int rod, ped, ckm, cped, tot = 0;
+    bool f = false;
+    cin >> rod >> ped;
+    cin >> ckm >> cped;
+
+    cout << (rod * ckm) + ((rod / ped) * cped) << endl;
     return 0;
 }

@@ -72,6 +72,45 @@ int main()
         }
         vet.clear();
         k = 0;
+        bool f = binary_search(vet.begin(), vet.end(), 4);
     }
     return 0;
 }
+
+//THE FASTER VERSION THAT I GOT
+
+// int main()
+// {
+//     fastio;
+//     vi vet;
+//     int n, q, x, c, k, cases = 1;
+//     while (cin >> n >> q && n && q)
+//     {
+//         while (n--)
+//         {
+//             cin >> x;
+//             vet.pb(x);
+//         }
+//         sort(vet.begin(), vet.end());
+//         cout << "CASE# " << cases << ":\n";
+//         cases++;
+//         while (q--)
+//         {
+//             cin >> c;
+//             // k = bs(vet, c);
+//             bool f = binary_search(vet.begin(), vet.end(), c);
+//             if (f)
+//             {
+//                 auto it = lower_bound(vet.begin(), vet.end(), c);
+//                 cout << c << " found at " << (it - vet.begin()) + 1 << endl;
+//             }
+//             else
+//             {
+//                 cout << c << " not found\n";
+//             }
+//         }
+//         vet.clear();
+//         k = 0;
+//     }
+//     return 0;
+// }

@@ -18,8 +18,19 @@ typedef long double ld;
 int main()
 {
     fastio;
-    int n, n2;
-    cin >> n >> n2;
-    cout << n % n2 << endl;
+    double x;
+    vector<double> vet;
+    for (int i = 0; i < 5; i++)
+    {
+        cin >> x;
+        vet.pb(x);
+    }
+    sort(vet.begin(), vet.end());
+    double cont = 0;
+    for (int i = 1; i < 4; i++)
+    {
+        cont += vet[i];
+    }
+    printf("%.1lf\n", cont);
     return 0;
 }
