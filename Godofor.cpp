@@ -1,3 +1,4 @@
+//ordem lexicografica  =
 #include <bits/stdc++.h>
 #define fastio                        \
     ios_base::sync_with_stdio(false); \
@@ -17,47 +18,45 @@ typedef long double ld;
 
 typedef struct
 {
-    char nome[10000];
+    string nome;
     int poder, mortes, morreu;
 } Deus;
 
-int compare(const void *p1, const void *p2)
+int compare(Deus p1, Deus p2)
 {
-    Deus *i = (Deus *)p1, *j = (Deus *)p2;
-    if (i->poder < j->poder)
-        return 1;
-    else if (i->poder > j->poder)
-        return -1;
-    else if (i->mortes < j->mortes)
-        return 1;
-    else if (i->mortes > j->mortes)
-        return -1;
-    else if (i->morreu < j->morreu)
-        return 1;
-    else if (i->morreu > j->morreu)
-        return -1;
+    if (p1.poder != p2.poder)
+        return p1.poder > p2.poder;
+    else if (p1.mortes != p2.mortes)
+        return p1.mortes > p2.mortes;
+    else if (p1.morreu != p2.morreu)
+        return p1.morreu < p2.morreu;
     else
-        return strcmp(i->nome, j->nome);
+        return p1.nome < p2.nome;
 }
 
 int main()
 {
-    char nome[1000];
-    int n, poder, mortes, morreu, i = 0;
-    cin >> n;
-    Deus d[n];
-    int aux = n;
-    while (aux--)
+    string nome;
+    int n;
+    while (cin >> n)
     {
-        cin >> nome >> poder >> mortes >> morreu;
-        strcpy(d[i].nome, nome);
-        d[i].poder = poder;
-        d[i].mortes = mortes;
-        d[i].morreu = morreu;
-        i++;
+        int poder, mortes, morreu, i = 0;
+        Deus d[n + 1];
+        int aux = n;
+        while (aux--)
+        {
+            cin >> nome >> poder >> mortes >> morreu;
+            d[i].nome = nome;
+            d[i].poder = poder;
+            d[i].mortes = mortes;
+            d[i].morreu = morreu;
+            i++;
+        }
+
+        stable_sort(d, d + n, compare);
+        cout << d[0].nome << endl;
+        nome.clear();
     }
-    qsort(d, n, sizeof(Deus), compare);
-    cout << d[0].nome << endl;
 
     return 0;
 }

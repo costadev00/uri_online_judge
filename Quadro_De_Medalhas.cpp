@@ -3,44 +3,40 @@ using namespace std;
 
 typedef struct
 {
-    char nome[10000];
+    string nome;
     int ouro, prata, bronze;
 } Pais;
 
-int compare(const void *p1, const void *p2)
+bool compare(Pais p1, Pais p2)
 {
-    Pais *i = (Pais *)p1, *j = (Pais *)p2;
-    if (i->ouro < j->ouro)
-        return 1;
-    else if (i->ouro > j->ouro)
-        return -1;
-    else if (i->prata < j->prata)
-        return 1;
-    else if (i->prata > j->prata)
-        return -1;
-    else if (i->bronze < j->bronze)
-        return 1;
-    else if (i->bronze > j->bronze)
-        return -1;
+    if (p1.ouro != p2.ouro)
+        return p1.ouro > p2.ouro;
+
+    else if (p1.prata != p2.prata)
+        return p1.prata > p2.prata;
+
+    else if (p1.bronze != p2.bronze)
+        return p1.bronze > p2.bronze;
+
     else
-        return strcmp(i->nome, j->nome);
+        return p1.nome < p2.nome;
 }
 int main()
 {
     int n;
     cin >> n;
-    char nome[10000];
+    string nome;
     unsigned int ouro, prata, bronze;
     Pais p[n];
     for (int i = 0; i < n; i++)
     {
         cin >> nome >> ouro >> prata >> bronze;
-        strcpy(p[i].nome, nome);
+        p[i].nome = nome;
         p[i].ouro = ouro;
         p[i].prata = prata;
         p[i].bronze = bronze;
     }
-    qsort(p, n, sizeof(Pais), compare);
+    stable_sort(p, p + n, compare);
 
     for (int i = 0; i < n; i++)
     {
