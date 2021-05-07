@@ -15,63 +15,57 @@ typedef long double ld;
 #define read(st) getline(cin, st)
 #define FOR(i, a, b) for (int i = a; i < b; i++)
 
-// Implementar o problema da Mochila binária (0-1) utilizando as abordagens:
-// a) PD top-down com memoização.
-// b) PD bottom-up.
+int sum = 0;
+int it = 0;
 
-// Testar com os valores: peso = { 4, 2, 1, 3 } e valor = { 500, 400, 300, 450 } e responda qual é o valor máximo para uma mochila de peso W = 5.
-
-// Entregar um arquivo compactado com o código-fonte. Pode ser feito em duplas (não se esqueçam de incluir os nomes dentro do código-fonte).
-#include <bits/stdc++.h>
-using namespace std;
-int weight;
-// Returns the value of maximum profit
-int knapSackRec(int W, int wt[], int val[], int i, int **dp)
+int knapsackBottomUp(int W, int wt[], int val[], int n)
 {
-    // base condition
-    if (i < 0)
-        return 0;
-    if (dp[i][W] != -1)
+    int i, w;
+    int dp[n + 1][W + 1];
+
+    // Build table dp[][] in bottom up manner
+    for (i = 0; i <= n; i++)
     {
-        weight = W;
-        return dp[i][W];
+        for (w = 0; w <= W; w++)
+        {
+            if (i == 0 || w == 0)
+                dp[i][w] = 0;
+            else if (wt[i - 1] <= w)
+                dp[i][w] = max(val[i - 1] + dp[i - 1][w - wt[i - 1]], dp[i - 1][w]);
+            else
+                dp[i][w] = dp[i - 1][w];
+        }
     }
 
-    weight = W;
-    if (wt[i] > W)
+    // stores the result of Knapsack
+    int res = dp[n][W];
+
+    w = W;
+    for (i = n; i > 0 && res > 0; i--)
     {
-        // Store the value of function call
-        // stack in the table before return
-        dp[i][W] = knapSackRec(W, wt, val, i - 1, dp);
-        return dp[i][W];
+
+        // either the result comes from the top
+        // (dp[i-1][w]) or from (val[i-1] + dp[i-1]
+        // [w-wt[i-1]]) as in Knapsack table. If
+        // it comes from the latter one/ it means
+        // the item is included.
+        if (res == dp[i - 1][w])
+            continue;
+        else
+        {
+            // This item is included.
+            //sum the total weight
+            sum += wt[i - 1];
+            // Since this weight is included its
+            // value is deducted
+            res = res - val[i - 1];
+            w = w - wt[i - 1];
+            //sum of how many packages(items)
+            it++;
+        }
     }
-    else
-    {
-        // Store value in a table before return
-        dp[i][W] = max(val[i] + knapSackRec(W - wt[i], wt, val, i - 1, dp), knapSackRec(W, wt, val, i - 1, dp));
-        // Return value of table after storing
-        return dp[i][W];
-    }
+    return dp[n][W];
 }
-
-int knapSackTopDown(int W, int wt[], int val[], int n)
-{
-    // double pointer to declare the
-    // table dynamically
-    int **dp;
-    dp = new int *[n];
-
-    // loop to create the table dynamically
-    for (int i = 0; i < n; i++)
-        dp[i] = new int[W + 1];
-
-    //memoization with -1 before calling the recursive function
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < W + 1; j++)
-            dp[i][j] = -1;
-    return knapSackRec(W, wt, val, n - 1, dp);
-}
-
 int main()
 {
     fastio;
@@ -85,9 +79,12 @@ int main()
         {
             cin >> qt[i] >> peso[i];
         }
-        weight = 0;
-        cout << knapSackTopDown(50, peso, qt, pac) << " brinquedos\n";
-        cout << "Peso: " << 50 - weight << " kg\n";
+        sum = 0;
+        it = 0;
+        cout << knapsackBottomUp(50, peso, qt, pac) << " brinquedos\n";
+        cout << "Peso: " << sum << " kg\n";
+        cout << "sobra(m) " << pac - it << " pacote(s)\n";
+        cout << endl;
     }
     return 0;
 }
