@@ -1,50 +1,51 @@
-/*
-code by: Hellen Ayumi
-*/
 #include <bits/stdc++.h>
-
 using namespace std;
+
+typedef long long ll;
+typedef long double ld;
+
+#define endl "\n"
+#define MOD 1000000007
+#define vi vector<int>
+#define pb push_back
+#define read(st) getline(cin, st)
+#define FOR(i, a, b) for (int i = a; i < b; i++)
 
 int main()
 {
-    int a, b, d, f, e = 1, i;
-    char c;
-    cin >> a;
-    while (a != 0)
+    int n, t = 0;
+    while (cin >> n && n)
     {
-        f = 0;
-        d = 1;
-        for (i = 0; i < a; i++)
+        int ans = 0;
+        int x;
+        char c;
+        bool v = true;
+        bool flag = false;
+        for (int i = 0; i < n; i++)
         {
-            if (i > 0)
+            if (flag)
             {
                 cin >> c;
                 if (c == '+')
-                {
-                    d = 1;
-                }
+                    v = true;
                 else
-                {
-                    d = 0;
-                }
+                    v = false;
             }
-            cin >> b;
-            if (d == 1)
+            flag = true;
+            cin >> x;
+            if (v)
             {
-                f = f + b;
+                ans += x;
             }
             else
             {
-                f = f - b;
+                ans -= x;
             }
         }
 
-        cout << "Teste " << e << endl;
-        cout << f << endl
+        cout << "Teste " << ++t << endl;
+        cout << ans << endl
              << endl;
-        e++;
-        cin >> a;
     }
-
     return 0;
 }

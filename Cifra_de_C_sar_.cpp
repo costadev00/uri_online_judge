@@ -19,24 +19,27 @@ typedef long double ld;
 int main()
 {
     fastio;
-    int x1, y1, x2, y2;
-    int res = 0;
-    while (cin >> x1 >> y1 >> x2 >> y2 && x1 && y1 && x2 && y2)
+    int n;
+    int chave;
+    while (cin >> n)
     {
-        int mat[8][8] = {0};
-        mat[x2][y2] = 1;
-        if (x1 == x2 && y1 == y2)
+        cin.ignore();
+        string str;
+        while (n--)
         {
-            cout << 0 << endl;
-            continue;
+            cin >> str;
+            cin >> chave;
+            int tam = str.length();
+            for (int i = 0; i < tam; i++)
+            {
+                str[i] = str[i] - chave;
+                if (str[i] < 65)
+                {
+                    str[i] = str[i] + 26;
+                }
+            }
+            cout << str << endl;
         }
-        int distx = abs(x1 - x2);
-        int disty = abs(y1 - y2);
-        if (y1 == y2 || x1 == x2 || distx == disty)
-            res = 1;
-        else
-            res = 2;
-        cout << res << endl;
     }
     return 0;
 }

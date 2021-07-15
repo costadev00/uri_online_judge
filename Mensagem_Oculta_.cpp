@@ -27,7 +27,8 @@ vector<string> split(const string &s, char delimiter)
     }
     return tokens;
 }
-//compete·online·design·event·rating
+//compete.online.design.event.rating
+// ..u....r.i..o....n.l..i....n..e...
 //14
 // 13-6 =7
 //7-6
@@ -36,24 +37,24 @@ int main()
     fastio;
     int n;
     cin >> n;
-    string s;
-    char res[10000];
+    cin.ignore();
+    string str, res;
+    vector<string> vets;
     while (n--)
     {
-        cin >> s;
-        int tam = s.length();
-        int j = 1, x = 0;
-        FOR(i, 0, tam)
+        read(str);
+        vets = split(str, ' ');
+        for (int i = 0; i < vets.size(); i++)
         {
-            if (s[i] == '.')
+            if (isalpha(vets[i][0]) != 0)
             {
-                res[x] = s[j - i - 1];
-                j = 1;
-                x++;
+                res.push_back(vets[i][0]);
             }
-            j++;
         }
         cout << res << endl;
+        vets.clear();
+        res.clear();
+        // n--;
     }
     return 0;
 }

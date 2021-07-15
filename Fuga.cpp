@@ -1,26 +1,19 @@
-#include <stdio.h>
-#include <string.h>
+#include <bits/stdc++.h>
+#define fastio                        \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL)
 
-/*
- O problema na verdade pode ser resolvido em tempo O(N*M) ou até em tempo constante,
- mas a princípio coloquei como solução o backtracking (também pode ser melhorado com alguma poda no backtracking). 
- Se precisar dificultar, dá pra colocar valores maiores de N e M.
- A solução é um caminho máximo no grafo das células de coordenadas ímpares (vértices são os asteriscos). 
-	
-	*-*-*-*
-	|#|#|#|
-	*-*-*-*
-	|#|#|#|
-	*-*-*-*
-	|#|#|#|
-	*-*-*-*
+using namespace std;
 
- Sempre é possível derrubar os armários para forçar o caminho máximo como único caminho 
- e obviamente não dá pra fazer melhor que o caminho máximo. 
- Também não é possível bloquear completamente o caminho entre a entrada e a saída 
- já que os dois ficam na borda do grid (é fácil ver tentando fazer um corte no grafo).
-*/
+typedef long long ll;
+typedef long double ld;
 
+#define endl "\n"
+#define MOD 1000000007
+#define vi vector<int>
+#define pb push_back
+#define read(st) getline(cin, st)
+#define FOR(i, a, b) for (int i = a; i < b; i++)
 char grid[1123][1123];
 int n, m;
 int xf, yf;
@@ -51,7 +44,7 @@ void foo(int x, int y, int k)
     }
 }
 
-int main(void)
+int main()
 {
     int xi, yi;
     scanf("%d %d %d %d %d %d", &n, &m, &xi, &yi, &xf, &yf);

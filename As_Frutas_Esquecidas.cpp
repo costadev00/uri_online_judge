@@ -19,24 +19,28 @@ typedef long double ld;
 int main()
 {
     fastio;
-    int x1, y1, x2, y2;
-    int res = 0;
-    while (cin >> x1 >> y1 >> x2 >> y2 && x1 && y1 && x2 && y2)
+    int n, m;
+    cin >> n >> m;
+    string fruits[n];
+    string exp;
+
+    FOR(i, 0, n)
     {
-        int mat[8][8] = {0};
-        mat[x2][y2] = 1;
-        if (x1 == x2 && y1 == y2)
-        {
-            cout << 0 << endl;
-            continue;
-        }
-        int distx = abs(x1 - x2);
-        int disty = abs(y1 - y2);
-        if (y1 == y2 || x1 == x2 || distx == disty)
-            res = 1;
-        else
-            res = 2;
-        cout << res << endl;
+        cin >> fruits[i];
+        transform(fruits[i].begin(), fruits[i].end(), fruits[i].begin(), ::tolower);
     }
+    FOR(i, 0, m)
+    {
+        cin >> exp;
+        transform(exp.begin(), exp.end(), exp.begin(), ::tolower);
+        int l = exp.length();
+        for (int j = 0; j < l; j++)
+        {
+            for (int k = 0; k < fruits[i].length(); k++)
+            {
+            }
+        }
+    }
+
     return 0;
 }
