@@ -19,32 +19,24 @@ typedef long double ld;
 int main()
 {
     fastio;
-    int t, res = 0;
-    string s, num;
+    int t;
+    string s;
+    int cnt = 1;
     while (cin >> t)
     {
         cin.ignore();
         while (t--)
         {
             cin >> s;
-            FOR(i, 0, s.length())
+            for (int i = 0; i < s.length(); i++)
             {
-                if (s[i] >= 48 && s[i] <= 57)
-                {
-                    while (s[i] >= 48 && s[i] <= 57)
-                    {
-                        num.pb(s[i]);
-                        i++;
-                                        }
-                    stringstream ext(num);
-                    int x = 0;
-                    ext >> x;
-                    res += x;
-                }
-                num.clear();
+                if (tolower(s[i]) == 'a' || tolower(s[i]) == 'e' || tolower(s[i]) == 'i' || tolower(s[i]) == 'o' || tolower(s[i]) == 's')
+                    cnt *= 3;
+                else
+                    cnt *= 2;
             }
-            cout << res << endl;
-            res = 0;
+            cout << cnt << endl;
+            cnt = 1;
             s.clear();
         }
     }
