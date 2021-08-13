@@ -20,26 +20,32 @@ typedef long double ld;
 
 int main()
 {
-    int a[4], b, c, d, e, f, g;
-    for (b = 0; b < 4; b++)
-        scanf("%d", &a[b]);
-    for (b = 0; b < 4; b++)
+    fastio;
+    string nome;
+    float preco;
+    int n;
+    cin >> n;
+    while (n--)
     {
-        for (c = b + 1; c < 4; c++)
+        map<string, float> mp;
+        float acm = 0;
+        int m;
+        cin >> m;
+        while (m--)
         {
-            if (a[c] < a[b])
-            {
-                e = a[b];
-                a[b] = a[c];
-                a[c] = e;
-            }
+            cin >> nome >> preco;
+            //mp.insert({nome,preco});
+            mp[nome] = preco;
         }
+        int p;
+        int qtd;
+        cin >> p;
+        while (p--)
+        {
+            cin >> nome >> qtd;
+            acm += mp[nome] * qtd;
+        }
+        printf("R$ %.2f\n", acm);
     }
-    g = a[1] + a[2];
-    f = a[0] + a[1];
-    if (a[3] < g || a[2] < f)
-        printf("S\n");
-    else
-        printf("N\n");
     return 0;
 }

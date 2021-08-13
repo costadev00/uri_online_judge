@@ -20,26 +20,29 @@ typedef long double ld;
 
 int main()
 {
-    int a[4], b, c, d, e, f, g;
-    for (b = 0; b < 4; b++)
-        scanf("%d", &a[b]);
-    for (b = 0; b < 4; b++)
+    fastio;
+    int n;
+    vector<string> vet;
+    string p;
+    int cont = 0;
+    while (cin >> n)
     {
-        for (c = b + 1; c < 4; c++)
+        cin.ignore();
+        FOR(i, 0, n)
         {
-            if (a[c] < a[b])
+            cin >> p;
+            if (count(vet.begin(), vet.end(), p) >= 1)
+                continue;
+            bool flag = true;
+            for (int i = 0; i < p.length(); i++)
             {
-                e = a[b];
-                a[b] = a[c];
-                a[c] = e;
+                if (!isalpha(p[i]))
+                    flag = false;
             }
+            if (flag)
+                vet.pb(p);
         }
+        cout << "Falta(m) " << 151 - vet.size() << " pomekon(s).\n";
     }
-    g = a[1] + a[2];
-    f = a[0] + a[1];
-    if (a[3] < g || a[2] < f)
-        printf("S\n");
-    else
-        printf("N\n");
     return 0;
 }

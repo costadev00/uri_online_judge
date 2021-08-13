@@ -1,30 +1,58 @@
-//TODO: SOLVE
 #include <bits/stdc++.h>
-
 #define fastio                        \
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL)
 
-#define endl "\n"
-
 using namespace std;
+
+typedef long long ll;
+typedef long double ld;
+
+#define endl "\n"
+#define debug(args...) cout << (#args) << " = " << (args) << endl
+#define MOD 1000000007
+#define vi vector<int>
+#define fl forward_list
+#define pb push_back
+#define pf push_front
+#define read(st) getline(cin, st)
+#define FOR(i, a, b) for (int i = a; i < b; i++)
 
 int main()
 {
     fastio;
-    char n;
-    string exp;
-    do
+    char c;
+    string s;
+    list<char> l;
+    while (cin >> c >> s)
     {
-        cin >> n;
-        cin >> exp;
-        for (int i = 0; i < exp.size(); i++)
+        if (c == '0' && s == "0")
+            break;
+        for (int i = 0; i < s.length(); i++)
         {
-            if (exp[i] == n)
+            l.push_back(s[i]);
+        }
+        l.remove(c);
+        int flag = 0;
+        if (l.empty())
+        {
+            cout << 0 << endl;
+            continue;
+        }
+        int x = 1;
+        for (auto i : l)
+        {
+            if (l.front() == '0' && (l.front() + 1) == '0')
             {
-                exp[i] = NULL;
+                x = 0;
             }
         }
-    } while (n == 0 && exp[0] == 0);
+        for (auto i : l)
+        {
+            cout << i;
+        }
+        cout << endl;
+        l.clear();
+    }
     return 0;
 }

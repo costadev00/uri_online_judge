@@ -1,61 +1,92 @@
 #include <bits/stdc++.h>
+#define fastio                        \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL)
 
 using namespace std;
 
-struct Pais
-{
-    string nome;
-    int ouro = 0, prata = 0, bronze = 0;
-};
+typedef long long ll;
+typedef long double ld;
 
-bool order(Pais p1, Pais p2)
+#define endl "\n"
+#define debug(args...) cout << (#args) << " = " << (args) << endl
+#define MOD 1000000007
+#define vi vector<int>
+#define fl forward_list
+#define pb push_back
+#define pf push_front
+#define read(st) getline(cin, st)
+#define FOR(i, a, b) for (int i = a; i < b; i++)
+
+typedef struct
 {
-    if (p1.ouro != p2.ouro)
-        return p1.ouro > p2.ouro;
-    if (p1.prata != p2.prata)
-        return p1.prata > p2.prata;
-    if (p1.bronze != p2.bronze)
-        return p1.bronze > p2.bronze;
-    return p1.nome < p2.nome;
+    int ouro = 0, prata = 0, bronze = 0;
+} Pais;
+
+bool cmp(pair<string, Pais> &a, pair<string, Pais> &b)
+{
+    if (a.second.ouro != b.second.ouro)
+        return a.second.ouro > b.second.ouro;
+    else if (a.second.prata != b.second.prata)
+        return a.second.prata > b.second.prata;
+    else if (a.second.bronze != b.second.bronze)
+        return a.second.bronze > b.second.bronze;
+    else
+        return a.first < b.first;
 }
 
+// Function to sort the map according
+// to value in a (key-value) pairs
+void sort(unordered_map<string, Pais> &M)
+{
+
+    // Declare vector of pairs
+    vector<pair<string, Pais>> A;
+
+    // Copy key-value pair from Map
+    // to vector of pairs
+    for (auto &it : M)
+    {
+        A.push_back(it);
+    }
+
+    // Sort using comparator function
+    sort(A.begin(), A.end(), cmp);
+
+    // Print the sorted value
+    for (auto &it : A)
+    {
+
+        cout << it.first << " "
+             << it.second.ouro << " " << it.second.prata << " " << it.second.bronze << endl;
+    }
+}
 int main()
 {
-    Pais tmp;
-    string in;
-    map<string, Pais> mPaises;
-    vector<Pais> vPaises;
-
-    while (getline(cin, in))
+    fastio;
+    string desc, med;
+    unordered_map<string, Pais> mp;
+    while (read(desc))
     {
-        for (int i = 0; i < 3; i++)
-        {
-            getline(cin, in);
-
-            if (i == 0)
-                mPaises[in].ouro++;
-            if (i == 1)
-                mPaises[in].prata++;
-            if (i == 2)
-                mPaises[in].bronze++;
-            mPaises[in].nome = in;
-        }
+        read(med);
+        // mp[med].nome = med;
+        //ouro
+        mp[med]
+            .ouro++;
+        //prata
+        read(med);
+        mp[med].prata++;
+        //bronze
+        read(med);
+        mp[med].bronze++;
     }
+    cout << "Quadro de Medalhas\n";
+    sort(mp);
 
-    for (auto it = mPaises.begin(); it != mPaises.end(); it++)
-    {
-        Pais p = it->second;
-        vPaises.push_back(p);
-    }
-
-    sort(vPaises.begin(), vPaises.end(), order);
-
-    cout << "Quadro de Medalhas" << endl;
-    for (int i = 0; i < vPaises.size(); i++)
-    {
-        Pais p = vPaises[i];
-        cout << p.nome << " " << p.ouro << " " << p.prata << " " << p.bronze << endl;
-    }
+    // for (auto i : mp)
+    // {
+    //     cout << i.first << " " << i.second.ouro << " " << i.second.prata << " " << i.second.bronze << endl;
+    // }
 
     return 0;
 }

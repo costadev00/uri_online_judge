@@ -1,4 +1,3 @@
-//TODO SOLVE
 #include <bits/stdc++.h>
 
 #define fastio                        \
@@ -12,25 +11,35 @@ using namespace std;
 int main()
 {
     fastio;
-    set<string> s;
-    string nome, opcao;
-    do
+    list<string> l;
+    set<string> s1, s2;
+    int maior = 0;
+    string nome, opcao, amigo;
+    while (cin >> nome && nome != "FIM")
     {
-        cin >> nome;
+        cin >> opcao;
         if (nome == "FIM")
         {
             break;
         }
-        cin >> opcao;
-        s.insert(nome);
-        // if (opcao == "YES")
-        // {
-        // }
-    } while (nome != "FIM");
-    for (auto x : s)
-    {
-        cout << x << endl;
+        if (opcao == "YES")
+        {
+            if (nome.length() > maior)
+            {
+                maior = nome.length();
+                amigo = nome;
+            }
+            s1.insert(nome);
+        }
+        else
+            s2.insert(nome);
     }
-
+    for (auto i : s1)
+        cout << i << endl;
+    for (auto i : s2)
+        cout << i << endl;
+    cout << endl;
+    cout << "Amigo do Habay:\n";
+    cout << amigo << endl;
     return 0;
 }

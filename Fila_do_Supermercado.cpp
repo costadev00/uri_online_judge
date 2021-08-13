@@ -1,3 +1,4 @@
+// TODO:SOLVE
 #include <bits/stdc++.h>
 #define fastio                        \
     ios_base::sync_with_stdio(false); \
@@ -20,26 +21,34 @@ typedef long double ld;
 
 int main()
 {
-    int a[4], b, c, d, e, f, g;
-    for (b = 0; b < 4; b++)
-        scanf("%d", &a[b]);
-    for (b = 0; b < 4; b++)
+    fastio;
+    int n, m, x;
+    cin >> n >> m;
+    // int v[n];
+    // int c[n];
+    priority_queue<int, vector<int>, greater<int>> v;
+    priority_queue<int> c;
+    FOR(i, 0, n)
     {
-        for (c = b + 1; c < 4; c++)
-        {
-            if (a[c] < a[b])
-            {
-                e = a[b];
-                a[b] = a[c];
-                a[c] = e;
-            }
-        }
+        cin >> x;
+        v.push(x);
     }
-    g = a[1] + a[2];
-    f = a[0] + a[1];
-    if (a[3] < g || a[2] < f)
-        printf("S\n");
-    else
-        printf("N\n");
+    FOR(i, 0, m)
+    {
+        cin >> x;
+        c.push(x);
+    }
+    while (!v.empty())
+    {
+        cout << v.top() << " ";
+        v.pop();
+    }
+    cout << endl;
+    while (!c.empty())
+    {
+        cout << c.top() << " ";
+        c.pop();
+    }
+    cout << endl;
     return 0;
 }

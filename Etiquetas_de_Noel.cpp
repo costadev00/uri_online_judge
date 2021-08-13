@@ -20,26 +20,32 @@ typedef long double ld;
 
 int main()
 {
-    int a[4], b, c, d, e, f, g;
-    for (b = 0; b < 4; b++)
-        scanf("%d", &a[b]);
-    for (b = 0; b < 4; b++)
+    fastio;
+    int n;
+    int m = 6;
+    cin >> n;
+    map<string, string> mp;
+    string idi, trad;
+    string nome;
+    while (n--)
     {
-        for (c = b + 1; c < 4; c++)
-        {
-            if (a[c] < a[b])
-            {
-                e = a[b];
-                a[b] = a[c];
-                a[c] = e;
-            }
-        }
+        cin >> idi;
+        cin.ignore();
+        read(trad);
+        mp[idi] = trad;
     }
-    g = a[1] + a[2];
-    f = a[0] + a[1];
-    if (a[3] < g || a[2] < f)
-        printf("S\n");
-    else
-        printf("N\n");
+    // for (auto i : mp)
+    //     cout << i.first << " " << i.second << endl;
+    cin >> m;
+    cin.ignore();
+    while (m--)
+    {
+        read(nome);
+        cin >> idi;
+        cin.ignore();
+        cout << nome << endl;
+        cout << mp[idi] << endl;
+        cout << endl;
+    }
     return 0;
 }

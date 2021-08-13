@@ -1,4 +1,3 @@
-//TODO: SOLVE
 #include <bits/stdc++.h>
 #define fastio                        \
     ios_base::sync_with_stdio(false); \
@@ -10,7 +9,7 @@ typedef long long ll;
 typedef long double ld;
 
 #define endl "\n"
-#define debug(args...) printf(args)
+#define debug(args...)
 #define MOD 1000000007
 #define vi vector<int>
 #define pb push_back
@@ -20,35 +19,27 @@ typedef long double ld;
 int main()
 {
     fastio;
-    int n, m, t;
-    vi tot, res;
+    int n, m, t, cont = 0;
+    list<int> list;
 
     while (cin >> n >> m && n && m)
     {
-        int cont = 0;
         while (m--)
         {
             cin >> t;
-            tot.pb(t);
+            list.pb(t);
         }
-        for (int i = 0; i < tot.size(); i++)
+        for (int i = 1; i <= n; i++)
         {
-            if (find(res.begin(), res.end(), tot[i]) != res.end())
-                cont++;
-            else
+            if (count(list.begin(), list.end(), i) >= 2)
             {
-                res.pb(tot[i]);
+                list.remove(i);
+                cont++;
             }
         }
-        // cout << tot.size() - res.size() << endl;
-        for (auto i : tot)
-            cout << i << " ";
-        cout << endl;
-        for (auto i : res)
-            cout << i << " ";
-        cout << endl;
-        res.clear();
-        tot.clear();
+        cout << cont << endl;
+        cont = 0;
+        list.clear();
     }
 
     return 0;

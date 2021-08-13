@@ -19,28 +19,29 @@ int main()
 {
     fastio;
     int n;
-    while (cin >> n)
+    while (cin >> n && n)
     {
-        list<int> p;
-        vector<int> vet;
+        list<int> p, disc;
         for (int i = 1; i <= n; i++)
         {
-            p.push_front(i);
+            p.push_back(i);
         }
         while (p.size() > 1)
         {
-            p.pop_back();
-            vet.push_back(p.back());
-            p.push_front(p.back());
-            p.remove(p.back());
+            disc.push_back(p.front());
+            p.pop_front();
+            int x = p.front();
+            p.pop_front();
+            p.push_back(x);
         }
         cout << "Discarded cards: ";
-        for (int i = 0; i < vet.size(); i++)
+        while (!disc.empty())
         {
-            if (i + 1 == vet.size())
-                cout << vet[i] << endl;
+            if (disc.size() == 1)
+                cout << disc.front() << endl;
             else
-                cout << i << ", ";
+                cout << disc.front() << ", ";
+            disc.pop_front();
         }
         cout << "Remaining card: ";
         for (auto i : p)
