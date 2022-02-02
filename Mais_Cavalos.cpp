@@ -1,37 +1,34 @@
-// #include <bits/stdc++.h>
-// using namespace std;
-// int main()
-// {
-//     char s[5], s1[5];
-//     cin >> s;
-//     cin >> s1;
-//     int i, j;
-//     for (i = 0; s[i] != '\0'; i++)
-//     {
-//         if (i == 0)
-//         {
-//             if (s[i] + 2 == s1[i] || s[i] - 2 == s1[i])
-//                 j = 1;
-//             else
-//             {
-//                 j = 0;
-//                 break;
-//             }
-//         }
-//         else if (i == 1)
-//         {
-//             if (s[i] + 1 == s1[i] || s[i] - 1 == s1[i])
-//                 j = 1;
-//             else
-//             {
-//                 j = 0;
-//                 break;
-//             }
-//         }
-//     }
-//     if (j == 1)
-//         cout << "VALIDO" << endl;
-//     else if (j == 0)
-//         cout << "INVALIDO" << endl;
-//     return 0;
-// }
+#include <bits/stdc++.h>
+#define fastio                        \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL)
+
+using namespace std;
+
+typedef long long ll;
+typedef long double ld;
+
+#define endl "\n"
+#define debug(args...) cout << (#args) << " = " << (args) << endl
+#define MOD 1000000007
+#define vi vector<int>
+#define fl forward_list
+#define pb push_back
+#define pf push_front
+#define read(st) getline(cin, st)
+#define FOR(i, a, b) for (int i = a; i < b; i++)
+
+int main()
+{
+    int l, ld;
+    char ini, dest;
+    bool val = true;
+    cin >> ini >> l >> dest >> ld;
+
+    if ((abs(ini - dest) == 2 && abs(l - ld) == 1) || (abs(ini - dest) == 1 && abs(l - ld) == 2))
+        val = false;
+
+    val ? cout << "INVALIDO\n" : cout << "VALIDO\n";
+
+    return 0;
+}

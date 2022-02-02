@@ -1,7 +1,4 @@
 #include <bits/stdc++.h>
-#define fastio                        \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(NULL)
 
 using namespace std;
 
@@ -20,22 +17,27 @@ typedef long double ld;
 
 int main()
 {
-    fastio;
-    int n;
-    while (cin >> n)
+    double p1, p2;
+    int c;
+    double x;
+    while (cin >> p1 >> c >> p2)
     {
-        int x;
-        vi vet;
-        for (int i = 0; i < n; i++)
+        double acm = p1;
+        while (c--)
         {
             cin >> x;
-            vet.pb(x);
+            acm += x;
         }
-        sort(vet.begin(), vet.end());
-        int cont = 0;
-        int res1 = n / 2;
-        cout << res1 << " ";
-        cout << vet[res1] - vet[res1 - 1] << endl;
+        if (acm <= p2)
+        {
+            printf("%.2lf\n",acm);
+            cout << "ho ho ho\n";
+        }
+        else
+        {
+            printf("%.2lf\n",acm);
+            cout <<"papai noel precisa fazer exercicios\n";
+        }
     }
     return 0;
 }

@@ -24,18 +24,10 @@ int main()
     int n;
     while (cin >> n)
     {
-        int x;
-        vi vet;
-        for (int i = 0; i < n; i++)
-        {
-            cin >> x;
-            vet.pb(x);
-        }
-        sort(vet.begin(), vet.end());
-        int cont = 0;
-        int res1 = n / 2;
-        cout << res1 << " ";
-        cout << vet[res1] - vet[res1 - 1] << endl;
+        if (n <= 25)
+            cout << "Recebe Presente, Feliz Natal!\n";
+        else
+            cout << "Recebe Carvao\n";
     }
     return 0;
 }

@@ -21,21 +21,19 @@ typedef long double ld;
 int main()
 {
     fastio;
-    int n;
-    while (cin >> n)
+    int d1, h1, m1;
+    int d2, h2, m2;
+    while (cin >> d1 >> h1 >> m1 >> d2 >> h2 >> m2)
     {
-        int x;
-        vi vet;
-        for (int i = 0; i < n; i++)
-        {
-            cin >> x;
-            vet.pb(x);
-        }
-        sort(vet.begin(), vet.end());
-        int cont = 0;
-        int res1 = n / 2;
-        cout << res1 << " ";
-        cout << vet[res1] - vet[res1 - 1] << endl;
+        d1 *= 86400;
+        h1 *= 3600;
+        m1 *= 60;
+        int somai = d1 + h1 + m1;
+        d2 *= 86400;
+        h2 *= 3600;
+        m2 *= 60;
+        int somaf = d2 + h2 + m2;
+        cout << abs(somai - somaf) << endl;
     }
     return 0;
 }

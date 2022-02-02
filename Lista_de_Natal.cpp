@@ -21,35 +21,27 @@ typedef long double ld;
 int main()
 {
     fastio;
-    char c;
-    string s, s2;
-    while (cin >> c >> s)
+    string nome, pres;
+    map<string, string> m;
+    while (cin >> nome >> pres)
     {
-        if (c == '0' && s == "0")
-            break;
-        int size = s.size();
-        for (int i = 0; i < size; i++)
+        m[nome] = pres;
+        if (nome == "--" && pres == "--")
         {
-            if (s[i] != c)
+            while (cin >> nome)
             {
-                if (s[i] == '0')
+                auto it = m.find(nome);
+                if (it != m.end())
                 {
-                    if (!s2.empty())
-                    {
-                        s2.pb(s[i]);
-                    }
+                    cout << "Child: " << nome << endl;
+                    cout << "Gift " << m[nome]<<endl;
                 }
                 else
-                {
-                    s2.pb(s[i]);
-                }
+                    cout << "404 not found\n";
+                cout<<endl;
             }
+            m.clear();
         }
-        if (!s2.empty())
-            cout << s2 << endl;
-        else
-            cout << 0 << endl;
-        s2.clear();
     }
     return 0;
 }

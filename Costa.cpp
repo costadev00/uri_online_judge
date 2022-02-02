@@ -21,30 +21,21 @@ typedef long double ld;
 int main()
 {
     fastio;
-    ll n;
-    char c;
-    ll t;
-    cin >> t;
-    string s;
-    while (t--)
+    int n, m;
+    while (cin >> m >> n)
     {
-        cin >> n;
-        read(s);
-        ll k = s.size();
-        ll res = 0;
-        ll i = 1;
-        ll cal = 2;
-        ll aux = 1;
-        while (cal >= 1)
-        {
-            cal = n - (i * k);
-            if (cal < 1)
-                break;
-            aux *=cal;
-            i++;
-        }
-        res += n * aux;
-        s.clear();
+        char mat[m + 2][n + 2];
+        int res = 0;
+        memset(mat, '.', sizeof(mat));
+        for (int i = 1; i <= m; i++)
+            for (int j = 1; j <= n; j++)
+                cin >> mat[i][j];
+
+        for (int i = 0; i <= m; i++)
+            for (int j = 1; j <= n; j++)
+                if (mat[i][j] == '#')
+                    if (mat[i + 1][j] == '.' || mat[i - 1][j] == '.' || mat[i][j + 1] == '.' || mat[i][j - 1] == '.')
+                        res++;
         cout << res << endl;
     }
     return 0;

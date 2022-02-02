@@ -18,24 +18,36 @@ typedef long double ld;
 #define read(st) getline(cin, st)
 #define FOR(i, a, b) for (int i = a; i < b; i++)
 
+int gcd(ll a, ll b)
+{
+    // Everything divides 0
+    if (a == 0)
+        return b;
+    if (b == 0)
+        return a;
+
+    // base case
+    if (a == b)
+        return a;
+
+    // a is greater
+    if (a > b)
+        return gcd(a - b, b);
+    return gcd(a, b - a);
+}
+
 int main()
 {
     fastio;
-    int n;
-    while (cin >> n)
+    ll a, b, c, d;
+    while (cin >> a >> b >> c >> d)
     {
-        int x;
-        vi vet;
-        for (int i = 0; i < n; i++)
-        {
-            cin >> x;
-            vet.pb(x);
-        }
-        sort(vet.begin(), vet.end());
-        int cont = 0;
-        int res1 = n / 2;
-        cout << res1 << " ";
-        cout << vet[res1] - vet[res1 - 1] << endl;
+
+        ll den = b * d;
+        ll num = ((den / b) * a) + ((den / d) * c);
+        ll min = gcd(den, num);
+
+        cout << num / min << " " << den / min << endl;
     }
     return 0;
 }

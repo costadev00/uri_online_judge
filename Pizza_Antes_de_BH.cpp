@@ -21,21 +21,30 @@ typedef long double ld;
 int main()
 {
     fastio;
-    int n;
-    while (cin >> n)
+    int n, d;
+    while (cin >> n >> d)
     {
         int x;
-        vi vet;
-        for (int i = 0; i < n; i++)
+        string s;
+        vector<string> vet;
+        while (d--)
         {
-            cin >> x;
-            vet.pb(x);
+            cin >> s;
+            set<int> st;
+            FOR(i, 0, n)
+            {
+                cin >> x;
+                st.insert(x);
+            }
+            auto it = st.begin();
+            if (st.size() == 1 && *it != 0)
+                vet.pb(s);
         }
-        sort(vet.begin(), vet.end());
-        int cont = 0;
-        int res1 = n / 2;
-        cout << res1 << " ";
-        cout << vet[res1] - vet[res1 - 1] << endl;
+        // sort(vet.begin(), vet.end());
+        if (vet.empty())
+            cout << "Pizza antes de FdI\n";
+        else
+            cout << vet[0] << endl;
     }
     return 0;
 }

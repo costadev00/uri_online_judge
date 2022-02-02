@@ -25,17 +25,22 @@ int main()
     while (cin >> n)
     {
         int x;
-        vi vet;
-        for (int i = 0; i < n; i++)
+        vi vet(0, n);
+        bool p = false;
+        FOR(i, 0, n)
         {
             cin >> x;
             vet.pb(x);
         }
-        sort(vet.begin(), vet.end());
-        int cont = 0;
-        int res1 = n / 2;
-        cout << res1 << " ";
-        cout << vet[res1] - vet[res1 - 1] << endl;
+        for (int i = 1; i < n - 1; i++)
+        {
+            if (vet[i] < vet[i - 1] && vet[i] < vet[i + 1])
+                p = true;
+        }
+        if (p)
+            cout << "S\n";
+        else
+            cout << "N\n";
     }
     return 0;
 }

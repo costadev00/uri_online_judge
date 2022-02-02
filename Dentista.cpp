@@ -18,24 +18,35 @@ typedef long double ld;
 #define read(st) getline(cin, st)
 #define FOR(i, a, b) for (int i = a; i < b; i++)
 
+bool cmp(pair<int, int> i, pair<int, int> r)
+{
+    return i.second < r.second;
+}
+
 int main()
 {
     fastio;
     int n;
     while (cin >> n)
     {
-        int x;
-        vi vet;
-        for (int i = 0; i < n; i++)
+        vector<pair<int, int>> ac;
+        int x, y;
+        while (n--)
         {
-            cin >> x;
-            vet.pb(x);
+            cin >> x >> y;
+            ac.push_back(make_pair(x, y));
         }
-        sort(vet.begin(), vet.end());
-        int cont = 0;
-        int res1 = n / 2;
-        cout << res1 << " ";
-        cout << vet[res1] - vet[res1 - 1] << endl;
+        sort(ac.begin(), ac.end(), cmp);
+        int fin = ac[0].second;
+        int res = 1;
+        for (int i = 1; i < ac.size(); i++)
+        {
+            if (ac[i].first >= fin){
+                fin = ac[i].second;
+                res++;
+            }
+        }
+        cout << res << endl;
     }
     return 0;
 }

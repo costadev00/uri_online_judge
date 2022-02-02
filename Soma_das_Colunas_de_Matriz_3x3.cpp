@@ -22,20 +22,25 @@ int main()
 {
     fastio;
     int n;
-    while (cin >> n)
+    int c0 = 0;
+    int c1 = 0;
+    int c2 = 0;
+    int mat[3][3];
+    for (int i = 0; i < 3; i++)
     {
-        int x;
-        vi vet;
-        for (int i = 0; i < n; i++)
+        for (int j = 0; j < 3; j++)
         {
-            cin >> x;
-            vet.pb(x);
+            cin >> mat[i][j];
         }
-        sort(vet.begin(), vet.end());
-        int cont = 0;
-        int res1 = n / 2;
-        cout << res1 << " ";
-        cout << vet[res1] - vet[res1 - 1] << endl;
+    }
+    for (int j = 0; j < 3; j++)
+    {
+        int soma = 0;
+        for (int i = 0; i < 3; i++)
+        {
+            soma += mat[i][j];
+        }
+        cout << "Coluna " << j << ": " << soma << endl;
     }
     return 0;
 }

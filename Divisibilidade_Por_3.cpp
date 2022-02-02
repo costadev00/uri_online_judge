@@ -22,20 +22,21 @@ int main()
 {
     fastio;
     int n;
+    string m;
     while (cin >> n)
     {
-        int x;
-        vi vet;
+        cin.ignore();
+        cin >> m;
+        int soma = 0;
         for (int i = 0; i < n; i++)
         {
-            cin >> x;
-            vet.pb(x);
+            int x = m[i] - 48;
+            soma += x;
         }
-        sort(vet.begin(), vet.end());
-        int cont = 0;
-        int res1 = n / 2;
-        cout << res1 << " ";
-        cout << vet[res1] - vet[res1 - 1] << endl;
+        if (soma % 3 == 0)
+            cout << soma << " sim\n";
+        else
+            cout << soma << " nao\n";
     }
     return 0;
 }

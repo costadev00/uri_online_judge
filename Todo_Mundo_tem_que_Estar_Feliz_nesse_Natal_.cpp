@@ -18,24 +18,37 @@ typedef long double ld;
 #define read(st) getline(cin, st)
 #define FOR(i, a, b) for (int i = a; i < b; i++)
 
+typedef struct
+{
+    string nome, presente;
+    int distancia;
+} Pessoa;
+
+bool compare(Pessoa p1, Pessoa p2)
+{
+    return p1.distancia < p2.distancia;
+}
 int main()
 {
     fastio;
     int n;
     while (cin >> n)
     {
-        int x;
-        vi vet;
+        Pessoa p[n + 1];
+        string nome, presente;
+        int distancia;
         for (int i = 0; i < n; i++)
         {
-            cin >> x;
-            vet.pb(x);
+            cin >> nome >> presente >> distancia;
+            p[i].nome = nome;
+            p[i].presente = presente;
+            p[i].distancia = distancia;
         }
-        sort(vet.begin(), vet.end());
-        int cont = 0;
-        int res1 = n / 2;
-        cout << res1 << " ";
-        cout << vet[res1] - vet[res1 - 1] << endl;
+        stable_sort(p, p + n, compare);
+        for (int i = 0; i < n; i++)
+        {
+            cout << p[i].nome << " " << p[i].presente << " " << p[i].distancia << endl;
+        }
     }
     return 0;
 }
