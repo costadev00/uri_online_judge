@@ -18,23 +18,21 @@ typedef long double ld;
 #define pf push_front
 #define read(st) getline(cin, st)
 #define FOR(i, a, b) for (int i = a; i < b; i++)
-
-#define MAXN 501
-#define INF 10000001
+#define MAXN 1000000
+#define INF 100000005
 
 int dist[MAXN];
 bool processed[MAXN];
 vector<pair<int, int>> adj[MAXN];
-int k, o, d;
+
+priority_queue<pair<int, int>> q;
 void dijkstra(int n, int x)
 {
-    priority_queue<pair<int, int>> q;
-    memset(processed, false, MAXN);
+
     for (int i = 1; i <= n; i++)
         dist[i] = INF;
     dist[x] = 0;
     q.push({0, x});
-    
     while (!q.empty())
     {
         int a = q.top().second;
@@ -53,53 +51,29 @@ void dijkstra(int n, int x)
         }
     }
 }
-
 int main()
 {
     fastio;
-    int n, e;
-    while (cin >> n >> e)
+    int n, m;
+    while (cin >> n >> m)
     {
-        if (n == 0 && e == n)
-            break;
-        int x, y, h;
-        while (e--)
+        int u, v, w, k;
+        while (m--)
         {
-            cin >> x >> y >> h;
-            adj[x].push_back({y, h});
+            cin >> u >> v >> w;
+            adj[u].push_back({v, w});
+            adj[v].push_back({u, w});
         }
-
-        cin >> k;
-        while (k--)
+        int q;
+        cin >> q;
+        while (q--)
         {
-            bool flag = true;
-            cin >> o >> d;
-            for (auto u : adj[o])
-            {
-                // debug(u.first);
-                if (u.first == d)
-                {
-                    cout << 0 << endl;
-                    flag = false;
-                    break;
-                }
-            }
-            if (flag)
-            {
-                dijkstra(n, o);
-                int acm = 0;
-                if (dist[d] == INF)
-                    cout << "Nao e possivel entregar a carta\n";
-                else
-                {
-                    debug(dist[d - 1]);
-                    cout << dist[d] - dist[d - 1] << endl;
-                }
-            }
+            cin >> u >> v >> k;
+            dijkstra(n, u);
+            cout << dist[v] << endl;
+            if (dist[v] <= k)
+                cout << -1 << endl;
         }
-        for (int i = 1; i <= n; i++)
-            adj[i].clear();
-        cout << endl;
     }
     return 0;
 }

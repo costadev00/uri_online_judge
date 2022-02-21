@@ -1,61 +1,63 @@
 #include <bits/stdc++.h>
-#define fastio                        \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(NULL)
+// Este é um algoritmo muito curto e eficiente quando
+//  é necessário encontrar todas as distâncias mínimas entre todos os pares/vertices.
 
+// EXEMPLO
+
+// 5
+// 6
+// 1 5 1
+// 1 2 5
+// 1 4 9
+// 2 3 2
+// 3 4 7
+// 4 5 2
 using namespace std;
-
-typedef long long ll;
-typedef long double ld;
-
-#define endl "\n"
-#define debug(args...) cout << (#args) << " = " << (args) << endl
-#define MOD 1000000007
-#define vi vector<int>
-#define fl forward_list
-#define pb push_back
-#define pf push_front
-#define read(st) getline(cin, st)
-#define FOR(i, a, b) for (int i = a; i < b; i++)
-#define N 500
-
-vector<int> adj[N + 1];
-
-void dfs(int current, bool visited[])
-{
-    visited[current] = true;
-    for (int i = 0; i < adj[current].size(); i++)
-    {
-        int nei = adj[current][i];
-        if (!visited[nei])
-            dfs(nei,visited);
-    }
-}
+#define MAXN 500
+const int INF = 1000000010;
+int adj[MAXN][MAXN];
 
 int main()
 {
-    fastio;
     int n, m, p;
-    while (cin >> n >> m >> p)
-    {
-        int x, y;
+    cin >> n >> m >> p;
+    int u, v, w;
+    // Criando o grafo, utilizando a matriz de adjacencia como representacao
 
-        while (m--)
+    for (int i = 0; i < n + 1; i++)
+    {
+        for (int j = 0; j < n + 1; j++)
         {
-            cin >> x >> y;
-            adj[x].pb(y);
-            adj[y].pb(x);
+            adj[i][j] = INF;
         }
-        while (p--)
+    }
+
+    for (int i = 0; i < m; i++)
+    {
+        cin >> u >> v;
+        adj[u][v] = 1;
+        adj[v][u] = 1;
+    }
+    // FLOYD WARSHALL
+    for (int k = 0; k <= n; k++)
+    {
+        for (int i = 0; i <= n; i++)
         {
-            bool visited[N + 1] = {false};
-            cin >> x >> y;
-            dfs(x, visited);
-            if (visited[y])
-                cout << "Lets que lets\n";
-            else
-                cout << "Deu ruim\n";
+            for (int j = 0; j <= n; j++)
+            {
+                if (adj[i][k] + adj[k][j] < adj[i][j])
+                    adj[i][j] = adj[i][k] + adj[k][j];
+            }
         }
+    }
+    int x, y;
+    while (p--)
+    {
+        cin >> x >> y;
+        if (adj[x][y] != INF && adj[y][x] != INF)
+            cout << "Lets que lets\n";
+        else
+            cout << "Deu ruim\n";
     }
     return 0;
 }
