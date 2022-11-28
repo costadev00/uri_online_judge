@@ -1,0 +1,12 @@
+const fs = require("fs");
+const r = fs.readFileSync(0, "utf8");
+line = r.split("\n");
+// console.log(line[0]);
+// console.log(line[1]);
+d1 = line[0].split(" ");
+d2 = line[1].split(" ");
+x1 = parseFloat(d1[0]);
+y1 = parseFloat(d1[1]);
+x2 = parseFloat(d2[0]);
+y2 = parseFloat(d2[1]);
+console.log(Math.sqrt((x2-x1)**2 + (y2-y1)**2).toFixed(4));
